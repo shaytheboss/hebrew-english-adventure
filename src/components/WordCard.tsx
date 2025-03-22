@@ -48,22 +48,22 @@ const WordCard: React.FC<WordCardProps> = ({ word, onSelect }) => {
         </div>
         <p className="text-xl font-medium text-slate-700">{word.hebrew}</p>
         
-        <div className="flex flex-col sm:flex-row gap-2 w-full mt-6">
+        <div className="flex flex-col gap-2 w-full mt-6">
           <button
             onClick={() => onSelect("verbs")}
-            className="flex-1 px-4 py-3 bg-verbs/10 hover:bg-verbs/20 text-verbs border border-verbs/30 rounded-lg transition-colors duration-200 text-sm md:text-base"
+            className="px-4 py-3 bg-verbs/10 hover:bg-verbs/20 text-verbs border border-verbs/30 rounded-lg transition-colors duration-200 text-sm md:text-base"
           >
             Verbs
           </button>
           <button
             onClick={() => onSelect("adjectives")}
-            className="flex-1 px-4 py-3 bg-adjectives/10 hover:bg-adjectives/20 text-adjectives border border-adjectives/30 rounded-lg transition-colors duration-200 text-sm md:text-base"
+            className="px-4 py-3 bg-adjectives/10 hover:bg-adjectives/20 text-adjectives border border-adjectives/30 rounded-lg transition-colors duration-200 text-sm md:text-base"
           >
             Adjectives
           </button>
           <button
             onClick={() => onSelect("nouns")}
-            className="flex-1 px-4 py-3 bg-nouns/10 hover:bg-nouns/20 text-nouns border border-nouns/30 rounded-lg transition-colors duration-200 text-sm md:text-base"
+            className="px-4 py-3 bg-nouns/10 hover:bg-nouns/20 text-nouns border border-nouns/30 rounded-lg transition-colors duration-200 text-sm md:text-base"
           >
             Nouns
           </button>
