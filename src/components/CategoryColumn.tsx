@@ -2,6 +2,8 @@
 import React from "react";
 import { WordItem, WordCategory } from "../types";
 import { motion, AnimatePresence } from "framer-motion";
+import { Volume2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface CategoryColumnProps {
   title: string;
@@ -18,6 +20,14 @@ const CategoryColumn: React.FC<CategoryColumnProps> = ({
   words,
   colorClass,
 }) => {
+  const speakWord = (word: string) => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = 'en-US';
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
   return (
     <div className="flex flex-col h-full">
       <div className={`text-center mb-2 font-medium text-${colorClass} px-4 py-2 rounded-lg bg-${colorClass}/10 self-center`}>
@@ -37,8 +47,22 @@ const CategoryColumn: React.FC<CategoryColumnProps> = ({
               transition={{ duration: 0.2 }}
               dir="auto"
             >
-              <div className="text-sm font-medium">{word.english}</div>
-              <div className="text-xs text-slate-600">{word.hebrew}</div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-sm font-medium">{word.english}</div>
+                  <div className="text-xs text-slate-600">{word.hebrew}</div>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="rounded-full p-2 h-7 w-7 flex items-center justify-center" 
+                  onClick={() => speakWord(word.english)}
+                  aria-label="Speak word"
+                  title="Speak word"
+                >
+                  <Volume2 className="h-3 w-3" />
+                </Button>
+              </div>
             </motion.div>
           ))}
         </AnimatePresence>

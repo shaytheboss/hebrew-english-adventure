@@ -2,6 +2,8 @@
 import React from "react";
 import { WordItem, WordCategory } from "../types";
 import { motion } from "framer-motion";
+import { Button } from "./ui/button";
+import { Volume2 } from "lucide-react";
 
 interface WordCardProps {
   word: WordItem;
@@ -9,6 +11,14 @@ interface WordCardProps {
 }
 
 const WordCard: React.FC<WordCardProps> = ({ word, onSelect }) => {
+  const speakWord = () => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(word.english);
+      utterance.lang = 'en-US';
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
   return (
     <motion.div
       className="word-card animate-scale-in"
@@ -18,9 +28,21 @@ const WordCard: React.FC<WordCardProps> = ({ word, onSelect }) => {
       dir="auto"
     >
       <div className="card-content space-y-4">
-        <h2 className="text-2xl font-semibold text-primary tracking-tight">
-          {word.english}
-        </h2>
+        <div className="flex items-center justify-center gap-2">
+          <h2 className="text-2xl font-semibold text-primary tracking-tight">
+            {word.english}
+          </h2>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="rounded-full p-2" 
+            onClick={speakWord}
+            aria-label="Speak word"
+            title="Speak word"
+          >
+            <Volume2 className="h-4 w-4" />
+          </Button>
+        </div>
         <p className="text-xl font-medium text-slate-700">{word.hebrew}</p>
         
         <div className="grid grid-cols-3 gap-2 w-full mt-6">
