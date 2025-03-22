@@ -50,19 +50,19 @@ const WordCard: React.FC<WordCardProps> = ({ word, onSelect }) => {
             onClick={() => onSelect("verbs")}
             className="px-3 py-2 bg-verbs/10 hover:bg-verbs/20 text-verbs border border-verbs/30 rounded-lg transition-colors duration-200"
           >
-            פעלים
+            Verbs
           </button>
           <button
             onClick={() => onSelect("adjectives")}
             className="px-3 py-2 bg-adjectives/10 hover:bg-adjectives/20 text-adjectives border border-adjectives/30 rounded-lg transition-colors duration-200"
           >
-            שמות תואר
+            Adjectives
           </button>
           <button
             onClick={() => onSelect("nouns")}
             className="px-3 py-2 bg-nouns/10 hover:bg-nouns/20 text-nouns border border-nouns/30 rounded-lg transition-colors duration-200"
           >
-            שמות עצם
+            Nouns
           </button>
         </div>
       </div>
